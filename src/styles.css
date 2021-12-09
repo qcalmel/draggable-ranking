@@ -2,6 +2,11 @@
     box-sizing: border-box;
 }
 
+h1{
+    text-transform: uppercase;
+    text-align: center;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -17,11 +22,11 @@ html, body {
     display: flex;
 }
 
-.position{
-    width: 40px;
+.position {
+    width: 60px;
     position: relative;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -32,14 +37,35 @@ html, body {
     display: flex;
     align-items: center;
     padding-bottom: 10px;
+
 }
 
+.position > div > div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    width: 50px;
+    background: lightblue;
+    border-radius: 100%;
+}
+
+.position div:nth-child(1) div{
+    background: linear-gradient(135deg, goldenrod 0%, gold 100%);
+}
+.position div:nth-child(2) div{
+    background: linear-gradient(135deg, silver 0%, lightgrey 100%);
+}
+.position div:nth-child(3) div{
+    background: linear-gradient(135deg, #D69449 0%, #D7C3AD 100%);
+}
 .content {
     position: relative;
     width: 800px;
     height: 240px;
     user-select: none;
 }
+
 .content > div {
     position: absolute;
     width: 800px;
@@ -49,10 +75,11 @@ html, body {
     transform-origin: 50% 50% 0px;
     border-radius: 5px;
     color: white;
+    font-weight: bold;
     line-height: 90px;
     padding-left: 32px;
     font-size: 14.5px;
-    background: lightblue;
+    background: linear-gradient(135deg, #61dafb 0%, lightblue 100%);
     text-transform: uppercase;
     letter-spacing: 2px;
 }

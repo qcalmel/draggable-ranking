@@ -6,16 +6,17 @@ import {animated, interpolate, useSprings} from 'react-spring'
 import './styles.css'
 import RankingItem from "./RankingItem";
 
+
 const fn = (order, down, originalIndex, curIndex, y) => index =>
     down && index === originalIndex
         ?
         {y: curIndex * 100 + y, scale: 1.1, zIndex: '1', shadow: 15, immediate: n => n === 'y' || n === 'zIndex'}
         : {y: order.indexOf(index) * 100, scale: 1, zIndex: '0', shadow: 1, immediate: false}
 
-const DraggableRanking = ({items}) => {
-    const data = JSON.parse(localStorage.getItem('rankingList'))
-    const order = useRef(items.map((_, index) => index))
 
+const DraggableRanking = ({items,onDrop}) => {
+
+    const order = useRef(items.map((_, index) => index))
     const [springs, setSprings] = useSprings(items.length, fn(order.current))
     const bind = useGesture(({args: [originalIndex], down, delta: [, y]}) => {
         const curIndex = order.current.indexOf(originalIndex)
@@ -29,15 +30,18 @@ const DraggableRanking = ({items}) => {
         // Settles the new order on the end of the drag gesture (when down is false)
         if (!down) {
             order.current = newOrder
-            data[0].items = newOrder.map(i => items[i])
-            localStorage.setItem('rankingList', JSON.stringify(data))
+            onDrop(newOrder)
         }
     });
     return (
         <div className="container">
             <div className="position">
                 {items.map((_, i) => (
-                    <div>{i+1}</div>
+                    <div key={i}>
+                        <div>
+                            {i+1}
+                        </div>
+                    </div>
                 ))}
             </div>
             <div className="content" style={{height: items.length * 100}}>

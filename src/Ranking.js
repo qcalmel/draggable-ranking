@@ -1,21 +1,27 @@
 
 import DraggableRanking from "./DraggableRanking";
-import initialData from './data/rankingFixtures.json'
-import {useState} from "react";
+import {useParams} from "react-router-dom";
 
 
 const Ranking = () => {
-    if(!localStorage.getItem('rankingList')){
-        localStorage.setItem('rankingList',JSON.stringify(initialData))
+    const {id} = useParams()
+    const data = JSON.parse(localStorage.getItem('rankingList'))
+    const index = data.findIndex(ranking => ranking.id == id)
+    const items = data[index].items
+
+    const handleDrop = (order) => {
+        data[index].items = order.map(i => items[i])
+        localStorage.setItem('rankingList', JSON.stringify(data))
     }
-    const [data,setData] = useState(() => JSON.parse(localStorage.getItem('rankingList')))
+
     return (
         <div>
             <h1>
-                {data[0].name}
+                {data[index].name}
             </h1>
             <DraggableRanking
-                items={data[0].items}
+                items={items}
+                onDrop={handleDrop}
             />
         </div>
     )
