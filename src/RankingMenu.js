@@ -10,14 +10,11 @@ if(!localStorage.getItem('rankingList')){
 
 const RankingMenu = () => {
     const [data,setData] = useState(() => JSON.parse(localStorage.getItem('rankingList')))
-    console.log(data)
     return (
-        <div>
-            <ul>
+        <div className="ranking-menu">
                 {data.map((ranking)=>{
-                    return <li key={ranking.id}><Link to={"/"+ ranking.id}>{ranking.name}</Link></li>
+                    return <Link key={ranking.id} to={"/"+ ranking.id}><div>{ranking.name}</div></Link>
                 })}
-            </ul>
         </div>
     )
 }

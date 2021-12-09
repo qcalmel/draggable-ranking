@@ -2,11 +2,6 @@
     box-sizing: border-box;
 }
 
-h1{
-    text-transform: uppercase;
-    text-align: center;
-}
-
 html, body {
     margin: 0;
     padding: 0;
@@ -16,6 +11,44 @@ html, body {
     justify-content: center;
     align-items: center;
     font-family: 'Raleway', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+h1{
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.ranking-menu{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.ranking-menu div {
+    width: 400px;
+    pointer-events: auto;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    line-height: 40px;
+    font-size: 14.5px;
+    background: linear-gradient(135deg, #61dafb 0%, lightblue 100%);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.ranking-menu div:hover{
+    background: lightgrey;
+}
+
+.ranking-menu div a {
+    color: white;
 }
 
 .container {

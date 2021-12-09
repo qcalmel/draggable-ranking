@@ -6,7 +6,7 @@ import RankingMenu from "./RankingMenu";
 function App() {
   return (
     <div className="App">
-        <h1>Draggable Ranking App</h1>
+        <Link to="/"><h1>Draggable Ranking App</h1></Link>
         <Routes>
             <Route path="/" element={ <RankingMenu/>}/>
             <Route path=":id" element={<Ranking/>}/>

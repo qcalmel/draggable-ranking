@@ -1,6 +1,6 @@
 
 import DraggableRanking from "./DraggableRanking";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 
 const Ranking = () => {
