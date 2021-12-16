@@ -21,7 +21,7 @@ const NewButton = ({onNewInput}) => {
         setNewList(false)
     }
     return (
-        <div ref={newListButtonRef}>
+        <div ref={newListButtonRef} className="new-button">
             {newList ?
                 (<input type='text' value={inputText} onChange={handleChange} onBlur={resetButton} onKeyDown={handleKeyDown} autoFocus={true}/>)
                 :

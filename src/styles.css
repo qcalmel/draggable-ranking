@@ -30,7 +30,7 @@ h1{
     align-items: center;
 }
 
-.ranking-menu div {
+.ranking-menu div,.new-button {
     width: 400px;
     pointer-events: auto;
     border-radius: 5px;
