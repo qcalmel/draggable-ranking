@@ -9,7 +9,7 @@ function App() {
         <Link to="/"><h1>Draggable Ranking App</h1></Link>
         <Routes>
             <Route path="/" element={ <RankingMenu/>}/>
-            <Route path=":id" element={<Ranking/>}/>
+            <Route path="/:id" element={<Ranking/>}/>
         </Routes>
 
     </div>

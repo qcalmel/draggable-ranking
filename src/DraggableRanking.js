@@ -1,21 +1,23 @@
-import {useRef} from 'react'
+import {useEffect, useRef} from 'react'
 import clamp from 'lodash-es/clamp'
 import swap from 'lodash-move'
 import {useGesture} from 'react-with-gesture'
 import {animated, interpolate, useSprings} from 'react-spring'
 import './styles.css'
 import RankingItem from "./RankingItem";
+import NewButton from "./NewButton";
 
 
-const fn = (order, down, originalIndex, curIndex, y) => index =>
+const fn = (order, down, originalIndex, curIndex, y) => index => {
+    return (
     down && index === originalIndex
         ?
         {y: curIndex * 100 + y, scale: 1.1, zIndex: '1', shadow: 15, immediate: n => n === 'y' || n === 'zIndex'}
         : {y: order.indexOf(index) * 100, scale: 1, zIndex: '0', shadow: 1, immediate: false}
+    )}
 
 
-const DraggableRanking = ({items,onDrop}) => {
-
+const DraggableRanking = ({items ,onDrop,onNew}) => {
     const order = useRef(items.map((_, index) => index))
     const [springs, setSprings] = useSprings(items.length, fn(order.current))
     const bind = useGesture(({args: [originalIndex], down, delta: [, y]}) => {
@@ -34,6 +36,7 @@ const DraggableRanking = ({items,onDrop}) => {
         }
     });
     return (
+        <>
         <div className="container">
             <div className="position">
                 {items.map((_, i) => (
@@ -59,7 +62,10 @@ const DraggableRanking = ({items,onDrop}) => {
                     />
                 ))}
             </div>
+
         </div>
+            <NewButton onNewInput={onNew}/>
+        </>
     )
 }
 
